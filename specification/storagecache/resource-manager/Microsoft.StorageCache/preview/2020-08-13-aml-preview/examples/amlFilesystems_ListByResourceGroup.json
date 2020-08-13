@@ -1,0 +1,121 @@
+{
+  "parameters": {
+    "resourceGroupName": "scgroup",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "api-version": "2020-07-23-preview"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "tags": {
+              "Dept": "ContosoAds"
+            },
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.StorageCache/amlFilesystems/fs1",
+            "location": "westus",
+            "name": "fs1",
+            "type": "Microsoft.StorageCache/amlFilesystem",
+            "properties": {
+              "storageCapacityTiB": 3072,
+              "availabilityZones": ["1", "2"],
+              "health": {
+                "state": "Healthy",
+                "statusDescription": "amlFilesystem is ok."
+              },
+              "provisioningState": "Succeeded",
+              "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/amlvnet/subnets/sub1",
+              "encryptionSettings": {
+                "keyEncryptionKey": {
+                  "keyUrl": "https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
+                  "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/examplekv"
+                }
+              },
+              "maintenanceWindow" : "2020-09-13T13:15Z",
+              "maintenanceStatus": {
+                "currentFirmwareVersion": "5.3.23",
+                "firmwareUpdateStatus": "available",
+                "firmwareUpdateDeadline": "2019-04-21T18:25:43.511Z",
+                "lastFirmwareUpdate": "2019-01-21T18:25:43.511Z",
+                "pendingFirmwareVersion": "5.3.24"
+              },
+              "hsmSettings": {
+                "container": "https://somecontainer.blob.core.windows.net/containername",
+                "containerKeyVaultKey": {
+                  "keyUrl": "https://somekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
+                  "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/somekv"
+                },
+                "importPrefix": "aml",
+                "exportPrefix": "aml"
+              },
+              "namespaceHydrationStatus": {
+                "state": "NotStarted",
+                "progress": {
+                  "blobCount": 1,
+                  "blobName": "fsblob",
+                  "errorCount": 0
+                }
+              }
+            },
+            "sku": {
+              "name": "Standard_2G"
+            }            
+          },
+          {
+            "tags": {
+              "Dept": "ContosoAds"
+            },
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.StorageCache/amlFilesystems/fs2",
+            "location": "westus",
+            "name": "fs2",
+            "type": "Microsoft.StorageCache/amlFilesystem",
+            "properties": {
+              "storageCapacityTiB": 3072,
+              "availabilityZones": ["1", "2"],
+              "health": {
+                "state": "Healthy",
+                "statusDescription": "amlFilesystem is ok."
+              },
+              "provisioningState": "Succeeded",
+              "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/amlvnet/subnets/sub2",
+              "encryptionSettings": {
+                "keyEncryptionKey": {
+                  "keyUrl": "https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
+                  "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/examplekv"
+                }
+              },
+              "maintenanceWindow" : "2020-09-13T13:15Z",
+              "maintenanceStatus": {
+                "currentFirmwareVersion": "5.3.23",
+                "firmwareUpdateStatus": "available",
+                "firmwareUpdateDeadline": "2019-04-21T18:25:43.511Z",
+                "lastFirmwareUpdate": "2019-01-21T18:25:43.511Z",
+                "pendingFirmwareVersion": "5.3.24"
+              },
+              "hsmSettings": {
+                "container": "https://somecontainer.blob.core.windows.net/containername",
+                "containerKeyVaultKey": {
+                  "keyUrl": "https://somekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
+                  "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/somekv"
+                },
+                "importPrefix": "aml",
+                "exportPrefix": "aml"
+              },
+              "namespaceHydrationStatus": {
+                "state": "NotStarted",
+                "progress": {
+                  "blobCount": 1,
+                  "blobName": "fsblob",
+                  "errorCount": 0
+                }
+              }
+            },
+            "sku": {
+              "name": "Standard_2G"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
