@@ -17,7 +17,7 @@
             "type": "Microsoft.StorageCache/amlFilesystem",
             "properties": {
               "storageCapacityTiB": 3072,
-              "availabilityZones": ["1", "2"],
+              "zones": ["1", "2"],
               "health": {
                 "state": "Healthy",
                 "statusDescription": "amlFilesystem is ok."
@@ -70,7 +70,7 @@
             "type": "Microsoft.StorageCache/amlFilesystem",
             "properties": {
               "storageCapacityTiB": 3072,
-              "availabilityZones": ["1", "2"],
+              "zones": ["1", "2"],
               "health": {
                 "state": "Healthy",
                 "statusDescription": "amlFilesystem is ok."

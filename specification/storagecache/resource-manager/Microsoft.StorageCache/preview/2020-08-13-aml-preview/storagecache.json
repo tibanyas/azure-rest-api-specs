@@ -2308,7 +2308,7 @@
               "readOnly": true,
               "$ref": "#/definitions/amlFilesystemHealth"
             },
-            "availabilityZones": {
+            "zones": {
               "type": "array",
               "items": {
                 "type": "string"
