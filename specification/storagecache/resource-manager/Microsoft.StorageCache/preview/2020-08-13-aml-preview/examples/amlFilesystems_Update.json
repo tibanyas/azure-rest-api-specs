@@ -13,7 +13,10 @@
         "storageCapacityTiB": 3072,
         "zones" : ["1", "2"],
         "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1",
-        "maintenanceWindow" : "2020-09-13T13:15Z",
+        "maintenanceStatus": {
+          "currentFirmwareVersion": "5.3.23",
+          "softwareUpdateStatus": "available"
+        },
         "HSMSettings" : {
           "container" : "https://somecontainer.blob.core.windows.net/containername",
           "containerKeyVaultKey" : {
@@ -54,13 +57,9 @@
               "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/examplekv"
             }
           },
-          "maintenanceWindow" : "2020-09-13T13:15Z",
           "maintenanceStatus": {
             "currentFirmwareVersion": "5.3.23",
-            "firmwareUpdateStatus": "available",
-            "firmwareUpdateDeadline": "2019-04-21T18:25:43.511Z",
-            "lastFirmwareUpdate": "2019-01-21T18:25:43.511Z",
-            "pendingFirmwareVersion": "5.3.24"
+            "softwareUpdateStatus": "available"
           },
           "hsmSettings": {
             "container": "https://somecontainer.blob.core.windows.net/containername",

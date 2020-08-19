@@ -1173,12 +1173,14 @@
             "type": "string"
           },
           {
-            "description": "Name of amlFilesystem. Length of name must be not greater than 80 and chars must be in list of [-0-9a-zA-Z_] char class.",
+            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
             "in": "path",
             "name": "amlFilesystemName",
-            "pattern": "^[-0-9a-zA-Z_]{1,80}$",
+            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -1232,12 +1234,14 @@
             "type": "string"
           },
           {
-            "description": "Name of amlFilesystem. Length of name must be not greater than 80 and chars must be in list of [-0-9a-zA-Z_] char class.",
+            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
             "in": "path",
             "name": "amlFilesystemName",
-            "pattern": "^[-0-9a-zA-Z_]{1,80}$",
+            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -1293,12 +1297,14 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "description": "Name of amlFilesystem. Length of name must be not greater than 80 and chars must be in list of [-0-9a-zA-Z_] char class.",
+            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
             "in": "path",
             "name": "amlFilesystemName",
-            "pattern": "^[-0-9a-zA-Z_]{1,80}$",
+            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
           },
           {
             "description": "Object containing the user-selectable properties of the new amlFilesystem. If read-only properties are included, they must match the existing values of those properties.",
@@ -1363,12 +1369,14 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "description": "Name of amlFilesystem. Length of name must be not greater than 80 and chars must be in list of [-0-9a-zA-Z_] char class.",
+            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
             "in": "path",
             "name": "amlFilesystemName",
-            "pattern": "^[-0-9a-zA-Z_]{1,80}$",
+            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
           },
           {
             "description": "Object containing the user-selectable properties of the amlFilesystem. If read-only properties are included, they must match the existing values of those properties.",
@@ -1425,12 +1433,14 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "description": "Name of amlFilesystem. Length of name must be not greater than 80 and chars must be in list of [-0-9a-zA-Z_] char class.",
+            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
             "in": "path",
             "name": "amlFilesystemName",
-            "pattern": "^[-0-9a-zA-Z_]{1,80}$",
+            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 80
           },
           {
             "name" : "info",
@@ -2283,7 +2293,7 @@
         "name": {
           "description": "Name of amlFilesystem.",
           "readOnly": true,
-          "$ref": "#/definitions/ResourceName"
+          "$ref": "#/definitions/amlFilesystemName"
         },
         "type": {
           "description": "Type of the filesystem; Microsoft.StorageCache/amlFilesystem",
@@ -2332,17 +2342,40 @@
               "type": "string"
             },
             "subnet": {
-              "description": "Subnet used for the amlFilesystem.",
+              "description": "Subnet used exclusively for the amlFilesystem.",
               "$ref": "#/definitions/URLString"
             },
             "encryptionSettings": {
               "$ref": "#/definitions/amlFilesystemEncryptionSettings",
-              "description": "Specifies encryption settings of the amlFilesystem."
+              "description": "Specifies encryption settings of the amlFilesystem"
             },
             "maintenanceWindow": {
               "description": "Start time of a 30 minute weekly maintenance window",
-              "type" : "string",
-              "format" : "date-time"
+              "type" : "object",
+              "properties": {
+                "dayOfWeek" : {
+                  "type" : "string",
+                  "enum": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                  ],
+                  "x-ms-enum": {
+                    "name": "MaintenanceDayOfWeekType",
+                    "modelAsString": false
+                  },
+                  "description" : "Day of the week that the maintenance window will occur"
+                },
+                "timeOfDay" : {
+                  "type" : "string",
+                  "pattern": "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$",
+                  "description": "The time of day to start the maintenance window"
+                }
+              }
             },
             "maintenanceStatus": {
               "description": "Maintenance status of the amlFilesystem.",
@@ -2354,7 +2387,7 @@
             },
             "namespaceHydrationStatus": {
               "description" : "Namespace Hydration Status during creation",
-              "$ref": "#/definitions/amlFilesystemHydrationStatus"
+              "$ref": "#/definitions/amlFilesystemNamespaceHydrationStatus"
             }
           },
           "type": "object"
@@ -2372,6 +2405,13 @@
       },
       "x-ms-azure-resource": true,
       "type": "object"
+    },
+    "amlFilesystemName" : {
+      "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
+      "type" : "string",
+      "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
+      "minLength": 2,
+      "maxLength": 80
     },
     "amlFilesystemsListResult": {
       "description": "Result of the request to list Caches. It contains a list of Caches and a URL link to get the next set of results.",
@@ -2420,13 +2460,13 @@
     "amlFilesystemMaintenanceStatus": {
       "description": "Properties describing the software upgrade state of the amlFilesystem.",
       "properties": {
-        "currentFirmwareVersion": {
-          "description": "Version string of the firmware currently installed on this amlFilesystem.",
+        "currentSoftwareVersion": {
+          "description": "Version string of the software currently installed on this amlFilesystem.",
           "type": "string",
           "readOnly": true
         },
-        "firmwareUpdateStatus": {
-          "description": "True if there is a firmware update ready to install on this amlFilesystem. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.",
+        "softwareUpdateStatus": {
+          "description": "True if there is a software update ready to install on this amlFilesystem. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.",
           "enum": [
             "available",
             "unavailable"
@@ -2437,23 +2477,6 @@
           },
           "readOnly": true,
           "type": "string"
-        },
-        "firmwareUpdateDeadline": {
-          "description": "Time at which the pending firmware update will automatically be installed on the amlFilesystem.",
-          "format": "date-time",
-          "type": "string",
-          "readOnly": true
-        },
-        "lastFirmwareUpdate": {
-          "description": "Time of the last successful firmware update.",
-          "format": "date-time",
-          "type": "string",
-          "readOnly": true
-        },
-        "pendingFirmwareVersion": {
-          "description": "When firmwareUpdateAvailable is true, this field holds the version string for the update.",
-          "type": "string",
-          "readOnly": true
         }
       },
       "readOnly" : true,
@@ -2515,8 +2538,8 @@
         }
       }
     },
-    "amlFilesystemHydrationStatus" : {
-      "description" : "Information about the amlFilesystem hydration status",
+    "amlFilesystemNamespaceHydrationStatus" : {
+      "description" : "Information about the amlFilesystem namespace hydration status",
       "type" : "object",
       "readOnly" : true,
       "properties": {
@@ -2530,7 +2553,7 @@
             "Complete"
           ],
           "x-ms-enum": {
-            "name": "HydrationStatusType",
+            "name": "NamespaceHydrationStatusType",
             "modelAsString": true
           }
         },

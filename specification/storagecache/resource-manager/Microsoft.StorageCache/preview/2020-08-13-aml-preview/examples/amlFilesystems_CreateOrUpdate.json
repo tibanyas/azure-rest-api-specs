@@ -19,7 +19,10 @@
             "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/examplekv"
           }
         },
-        "maintenanceWindow" : "2020-09-13T13:15Z",
+        "maintenanceWindow" : {
+          "dayOfWeek": "Friday",
+          "timeOfDay" : "22:00"
+        },
         "HSMSettings" : {
           "container" : "https://somecontainer.blob.core.windows.net/containername",
           "containerKeyVaultKey" : {
@@ -60,13 +63,13 @@
               "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/examplekv"
             }
           },
-          "maintenanceWindow" : "2020-09-13T13:15Z",
+          "maintenanceWindow" : {
+            "dayOfWeek": "Friday",
+            "timeOfDay" : "22:00"
+          },
           "maintenanceStatus": {
             "currentFirmwareVersion": "5.3.23",
-            "firmwareUpdateStatus": "available",
-            "firmwareUpdateDeadline": "2019-04-21T18:25:43.511Z",
-            "lastFirmwareUpdate": "2019-01-21T18:25:43.511Z",
-            "pendingFirmwareVersion": "5.3.24"
+            "softwareUpdateStatus": "available"
           },
           "hsmSettings" : {
             "container" : "https://somecontainer.blob.core.windows.net/containername",
