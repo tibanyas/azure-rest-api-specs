@@ -1447,7 +1447,12 @@
             "description" : "Information about the archive operation",
             "in" : "body",
             "schema" : {
-              "$ref" : "#/definitions/amlFilesystemArchive"
+              "properties": {
+                "filesystemPath" : {
+                  "type" : "string",
+                  "description" : "The path to the filesystem to archive."
+                }
+              }
             }
           }
         ],
@@ -2388,6 +2393,10 @@
             "namespaceHydrationStatus": {
               "description" : "Namespace Hydration Status during creation",
               "$ref": "#/definitions/amlFilesystemNamespaceHydrationStatus"
+            },
+            "archiveSettings" : {
+              "description": "Archive settings and status",
+              "$ref" :  "#/definitions/amlFilesystemArchive"
             }
           },
           "type": "object"
@@ -2580,8 +2589,10 @@
     "amlFilesystemArchive" : {
       "description" : "Information about the amlFilesystem archive",
       "type" : "object",
+      "readOnly": true,
       "properties": {
         "filesystemPath" : {
+          "readOnly": true,
           "type" : "string",
           "description" : "The path to the filesystem to archive."
         },
@@ -2606,19 +2617,23 @@
               }
             },
             "lastCompletionTime" : {
+              "readOnly" : true,
               "description" : "The time of the last completed archive operation",
               "type" : "string",
               "format" : "date-time"
             },
             "percentComplete" : {
+              "readOnly" : true,
               "description" : "The completion percentage of the archive",
               "type" : "integer"
             },
             "errorCode" : {
+              "readOnly" : true,
               "description" : "The error code of the archive operation",
               "type" : "integer"
             },
             "errorMessage" : {
+              "readOnly" : true,
               "description" : "The error message of the archive operation",
               "type" : "string"
             }

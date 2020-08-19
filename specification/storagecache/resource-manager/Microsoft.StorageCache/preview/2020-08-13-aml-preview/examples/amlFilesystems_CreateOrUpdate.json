@@ -87,6 +87,14 @@
               "blobName": "fsblob",
               "errorCount": 0
             }
+          },
+          "archiveSettings" : {
+            "filesystemPath" : "/mnt/lfs1",
+            "status" : {
+              "state" : "InProgress",
+              "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
+              "percentComplete" : 50
+            }
           }
         },
         "sku": {
@@ -135,6 +143,14 @@
               "blobCount": 1,
               "blobName": "fsblob",
               "errorCount": 0
+            }
+          },
+          "archiveSettings" : {
+            "filesystemPath" : "/mnt/lfs1",
+            "status" : {
+              "state" : "InProgress",
+              "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
+              "percentComplete" : 50
             }
           }
         },
