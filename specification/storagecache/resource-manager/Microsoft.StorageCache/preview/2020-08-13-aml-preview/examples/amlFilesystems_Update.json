@@ -14,8 +14,7 @@
         "zones" : ["1", "2"],
         "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1",
         "maintenanceStatus": {
-          "currentFirmwareVersion": "5.3.23",
-          "softwareUpdateStatus": "available"
+          "currentSoftwareVersion": "5.3.23"
         },
         "HSMSettings" : {
           "container" : "https://somecontainer.blob.core.windows.net/containername",
@@ -58,8 +57,7 @@
             }
           },
           "maintenanceStatus": {
-            "currentFirmwareVersion": "5.3.23",
-            "softwareUpdateStatus": "available"
+            "currentSoftwareVersion": "5.3.23"
           },
           "hsmSettings": {
             "container": "https://somecontainer.blob.core.windows.net/containername",
@@ -83,6 +81,7 @@
             "status" : {
               "state" : "InProgress",
               "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
+              "lastStartedTime" : "2019-04-21T17:25:43.511Z",
               "percentComplete" : 50
             }
           }

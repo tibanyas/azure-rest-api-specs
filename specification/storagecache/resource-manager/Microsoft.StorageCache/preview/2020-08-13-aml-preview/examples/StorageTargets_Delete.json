@@ -1,12 +1,10 @@
 {
   "parameters": {
     "resourceGroupName": "scgroup",
-    "cacheName": "sc",
     "subscriptionId": "00000000-0000-0000-0000-000000000000",
-    "api-version": "2020-07-23-preview",
-    "archiveInfo" : {
-      "filesystemPath" : "/mnt/fs1"
-    }
+    "api-version": "2020-03-01",
+    "cacheName": "sc1",
+    "storageTargetName": "st1"
   },
   "responses": {
     "200": {

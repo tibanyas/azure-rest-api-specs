@@ -68,8 +68,7 @@
             "timeOfDay" : "22:00"
           },
           "maintenanceStatus": {
-            "currentFirmwareVersion": "5.3.23",
-            "softwareUpdateStatus": "available"
+            "currentSoftwareVersion": "5.3.23"
           },
           "hsmSettings" : {
             "container" : "https://somecontainer.blob.core.windows.net/containername",
@@ -93,6 +92,7 @@
             "status" : {
               "state" : "InProgress",
               "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
+              "lastStartedTime" : "2019-04-21T17:25:43.511Z",
               "percentComplete" : 50
             }
           }
@@ -122,11 +122,7 @@
           "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/amlvnet/subnets/sub1",
           "maintenanceWindow" : "2020-09-13T13:15Z",
           "maintenanceStatus": {
-            "currentFirmwareVersion": "5.3.23",
-            "firmwareUpdateStatus": "available",
-            "firmwareUpdateDeadline": "2019-04-21T18:25:43.511Z",
-            "lastFirmwareUpdate": "2019-01-21T18:25:43.511Z",
-            "pendingFirmwareVersion": "5.3.24"
+            "currentSoftwareVersion": "5.3.23"
           },
           "hsmSettings": {
             "container": "https://somecontainer.blob.core.windows.net/containername",
@@ -150,6 +146,7 @@
             "status" : {
               "state" : "InProgress",
               "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
+              "lastStartedTime" : "2019-04-21T17:25:43.511Z",
               "percentComplete" : 50
             }
           }

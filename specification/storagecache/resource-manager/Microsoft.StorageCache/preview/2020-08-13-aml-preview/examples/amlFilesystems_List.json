@@ -60,6 +60,7 @@
                 "status" : {
                   "state" : "InProgress",
                   "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
+                  "lastStartedTime" : "2019-04-21T17:25:43.511Z",
                   "percentComplete" : 50
                 }
               }
@@ -96,8 +97,7 @@
                 "timeOfDay" : "22:00"
               },
               "maintenanceStatus": {
-                "currentFirmwareVersion": "5.3.23",
-                "softwareUpdateStatus": "available"
+                "currentSoftwareVersion": "5.3.23"
               },
               "hsmSettings": {
                 "container": "https://somecontainer.blob.core.windows.net/containername",
@@ -121,6 +121,7 @@
                 "status" : {
                   "state" : "InProgress",
                   "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
+                  "lastStartedTime" : "2019-04-21T17:25:43.511Z",
                   "percentComplete" : 50
                 }
               }

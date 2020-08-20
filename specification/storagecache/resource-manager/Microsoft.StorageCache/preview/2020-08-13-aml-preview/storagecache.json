@@ -1173,14 +1173,7 @@
             "type": "string"
           },
           {
-            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
-            "in": "path",
-            "name": "amlFilesystemName",
-            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
-            "required": true,
-            "type": "string",
-            "minLength": 2,
-            "maxLength": 80
+            "$ref":"#/parameters/amlFilesystemNameParameter"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -1234,14 +1227,7 @@
             "type": "string"
           },
           {
-            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
-            "in": "path",
-            "name": "amlFilesystemName",
-            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
-            "required": true,
-            "type": "string",
-            "minLength": 2,
-            "maxLength": 80
+            "$ref":"#/parameters/amlFilesystemNameParameter"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -1297,14 +1283,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
-            "in": "path",
-            "name": "amlFilesystemName",
-            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
-            "required": true,
-            "type": "string",
-            "minLength": 2,
-            "maxLength": 80
+            "$ref":"#/parameters/amlFilesystemNameParameter"
           },
           {
             "description": "Object containing the user-selectable properties of the new amlFilesystem. If read-only properties are included, they must match the existing values of those properties.",
@@ -1369,14 +1348,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
-            "in": "path",
-            "name": "amlFilesystemName",
-            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
-            "required": true,
-            "type": "string",
-            "minLength": 2,
-            "maxLength": 80
+            "$ref":"#/parameters/amlFilesystemNameParameter"
           },
           {
             "description": "Object containing the user-selectable properties of the amlFilesystem. If read-only properties are included, they must match the existing values of those properties.",
@@ -1433,26 +1405,14 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
-            "in": "path",
-            "name": "amlFilesystemName",
-            "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
-            "required": true,
-            "type": "string",
-            "minLength": 2,
-            "maxLength": 80
+            "$ref":"#/parameters/amlFilesystemNameParameter"
           },
           {
-            "name" : "info",
+            "name": "archiveInfo",
+            "in": "body",
             "description" : "Information about the archive operation",
-            "in" : "body",
-            "schema" : {
-              "properties": {
-                "filesystemPath" : {
-                  "type" : "string",
-                  "description" : "The path to the filesystem to archive."
-                }
-              }
+            "schema": {
+              "$ref": "#/definitions/amlFilesystemArchiveInfo"
             }
           }
         ],
@@ -2473,19 +2433,6 @@
           "description": "Version string of the software currently installed on this amlFilesystem.",
           "type": "string",
           "readOnly": true
-        },
-        "softwareUpdateStatus": {
-          "description": "True if there is a software update ready to install on this amlFilesystem. The firmware will automatically be installed after firmwareUpdateDeadline if not triggered earlier via the upgrade operation.",
-          "enum": [
-            "available",
-            "unavailable"
-          ],
-          "x-ms-enum": {
-            "name": "FirmwareStatusType",
-            "modelAsString": true
-          },
-          "readOnly": true,
-          "type": "string"
         }
       },
       "readOnly" : true,
@@ -2586,6 +2533,16 @@
         }
       }
     },
+    "amlFilesystemArchiveInfo": {
+      "type":"object",
+      "description": "Information required to execute the archive operation",
+      "properties": {
+        "filesystemPath" : {
+          "type" : "string",
+          "description" : "The path to the filesystem to archive."
+        }
+      }
+    },
     "amlFilesystemArchive" : {
       "description" : "Information about the amlFilesystem archive",
       "type" : "object",
@@ -2606,10 +2563,8 @@
               "description" : "The state of the archive operation",
               "type" : "string",
               "enum" : [
-                "NotStarted",
-                "InProgress",
-                "Failed",
-                "Complete"
+                "Idle",
+                "InProgress"
               ],
               "x-ms-enum": {
                 "name": "ArchiveStatusType",
@@ -2619,6 +2574,12 @@
             "lastCompletionTime" : {
               "readOnly" : true,
               "description" : "The time of the last completed archive operation",
+              "type" : "string",
+              "format" : "date-time"
+            },
+            "lastStartedTime" : {
+              "readOnly" : true,
+              "description" : "The time the latest archive operation started",
               "type" : "string",
               "format" : "date-time"
             },
@@ -2656,6 +2617,28 @@
       "required": true,
       "type": "string",
       "description": "Client API version."
+    },
+    "amlFileySystemArchiveParameter": {
+      "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
+      "in": "path",
+      "name": "amlFilesystemName",
+      "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
+      "required": true,
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 80,
+      "x-ms-parameter-location":"method"
+    },
+    "amlFilesystemNameParameter" : {
+      "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
+      "in": "path",
+      "name": "amlFilesystemName",
+      "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
+      "required": true,
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 80,
+      "x-ms-parameter-location":"method"
     }
   }
 }
