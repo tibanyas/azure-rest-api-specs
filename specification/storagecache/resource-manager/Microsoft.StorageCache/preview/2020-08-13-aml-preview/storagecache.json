@@ -1606,7 +1606,7 @@
           "type": "string"
         },
         "identity": {
-          "$ref": "#/definitions/CacheIdentity",
+          "$ref": "#/definitions/IdentityProperties",
           "description": "The identity of the cache, if configured."
         },
         "properties": {
@@ -1683,28 +1683,28 @@
       "x-ms-azure-resource": true,
       "type": "object"
     },
-    "CacheIdentity": {
-      "description": "Cache identity properties.",
+    "IdentityProperties": {
+      "description": "Identity properties.",
       "properties": {
         "principalId": {
           "readOnly": true,
           "type": "string",
-          "description": "The principal id of the cache."
+          "description": "The principal id."
         },
         "tenantId": {
           "readOnly": true,
           "type": "string",
-          "description": "The tenant id associated with the cache."
+          "description": "The tenant id."
         },
         "type": {
           "type": "string",
-          "description": "The type of identity used for the cache",
+          "description": "The type of identity.",
           "enum": [
             "SystemAssigned",
             "None"
           ],
           "x-ms-enum": {
-            "name": "CacheIdentityType",
+            "name": "IdentityPropertiesType",
             "modelAsString": false
           }
         }
@@ -2266,7 +2266,7 @@
           "type": "string"
         },
         "identity": {
-          "$ref": "#/definitions/amlFilesystemIdentity",
+          "$ref": "#/definitions/IdentityProperties",
           "description": "The managed identity used by the amlFilesystem, if configured."
         },
         "properties": {
@@ -2310,6 +2310,24 @@
               "description": "Subnet used exclusively for the amlFilesystem.",
               "$ref": "#/definitions/URLString"
             },
+            "MSGAddress" : {
+              "description": "IPv4 Address",
+              "type" : "string"
+            },
+            "mountCommand" : {
+              "description" : "The command to use to mount the lustre FS",
+              "type" : "string"
+            },
+            "lustreVersion" : {
+              "type" : "string",
+              "description" : "The version of lustre running in the amlFilesystem",
+              "readOnly": true
+            },
+            "throughputCapacity" : {
+              "type" : "string",
+              "description": "Storage capacity in MB per sec, caculated as storageCapacityTiB * per-unit storage throughput",
+              "readOnly": true
+            },
             "encryptionSettings": {
               "$ref": "#/definitions/amlFilesystemEncryptionSettings",
               "description": "Specifies encryption settings of the amlFilesystem"
@@ -2341,10 +2359,6 @@
                   "description": "The time of day to start the maintenance window"
                 }
               }
-            },
-            "maintenanceStatus": {
-              "description": "Maintenance status of the amlFilesystem.",
-              "$ref": "#/definitions/amlFilesystemMaintenanceStatus"
             },
             "hsmSettings": {
               "$ref": "#/definitions/amlFilesystemHSMSettings",
@@ -2399,45 +2413,6 @@
       },
       "type": "object"
     },
-    "amlFilesystemIdentity": {
-      "description": "amlFilesystem identity properties.",
-      "properties": {
-        "principalId": {
-          "readOnly": true,
-          "type": "string",
-          "description": "The principal id of the amlFilesystem."
-        },
-        "tenantId": {
-          "readOnly": true,
-          "type": "string",
-          "description": "The tenant id associated with the amlFilesystem."
-        },
-        "type": {
-          "type": "string",
-          "description": "The type of identity used for the amlFilesystem",
-          "enum": [
-            "SystemAssigned",
-            "None"
-          ],
-          "x-ms-enum": {
-            "name": "amlFilesystemIdentityType",
-            "modelAsString": false
-          }
-        }
-      }
-    },
-    "amlFilesystemMaintenanceStatus": {
-      "description": "Properties describing the software upgrade state of the amlFilesystem.",
-      "properties": {
-        "currentSoftwareVersion": {
-          "description": "Version string of the software currently installed on this amlFilesystem.",
-          "type": "string",
-          "readOnly": true
-        }
-      },
-      "readOnly" : true,
-      "type": "object"
-    },
     "amlFilesystemHealth": {
       "description": "An indication of amlFilesystem health. Gives more information about health than just that related to provisioning.",
       "properties": {
@@ -2445,8 +2420,9 @@
           "description": "List of amlFilesystem health states.",
           "enum": [
             "Unknown",
-            "Healthy",
-            "Down",
+            "Unavailable",
+            "Available",
+            "Degraded",
             "Transitioning",
             "Maintenance"
           ],
@@ -2478,11 +2454,6 @@
         "container": {
           "description": "Container used for the amlFilesystem.",
           "$ref": "#/definitions/URLString"
-        },
-        "containerKeyVaultKey": {
-          "x-ms-secret": true,
-          "$ref": "#/definitions/KeyVaultKeyReference",
-          "description": "Specifies the location of the encryption key in Key Vault."
         },
         "importPrefix" : {
           "description": "Path/Prefix for blobs in above container.  Only blobs containing this prefix get pre-hydrated into the cluster namespace",
@@ -2520,6 +2491,14 @@
             "blobCount" : {
               "description" : "The number of Blobs processed.",
               "type": "integer"
+            },
+            "size" : {
+              "type" : "integer",
+              "description" : "Aggregate size of blobs ingested so far"
+            },
+            "rate" : {
+              "type" : "integer",
+              "description": "Rate of ingest accounting for the last 30 seconds"
             },
             "blobName" : {
               "type" : "string",

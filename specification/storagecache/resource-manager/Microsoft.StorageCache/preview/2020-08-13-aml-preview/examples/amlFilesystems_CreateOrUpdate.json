@@ -13,6 +13,9 @@
         "storageCapacityTiB": 3072,
         "zones" : ["1", "2"],
         "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1",
+        "MSGAddress" : "10.0.0.4",
+        "mountCommand" : "mount -t lustre 10.1.0.13@tcp:/lustrefs /lustre/lustrefs",
+        "lustreVersion" : "2.12.5",
         "encryptionSettings": {
           "keyEncryptionKey": {
             "keyUrl": "https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
@@ -57,6 +60,9 @@
           },
           "provisioningState": "Succeeded",
           "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1",
+          "MSGAddress" : "10.0.0.4",
+          "mountCommand" : "mount -t lustre 10.1.0.13@tcp:/lustrefs /lustre/lustrefs",
+          "lustreVersion" : "2.12.5",
           "encryptionSettings": {
             "keyEncryptionKey": {
               "keyUrl": "https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
@@ -67,15 +73,8 @@
             "dayOfWeek": "Friday",
             "timeOfDay" : "22:00"
           },
-          "maintenanceStatus": {
-            "currentSoftwareVersion": "5.3.23"
-          },
           "hsmSettings" : {
             "container" : "https://somecontainer.blob.core.windows.net/containername",
-            "containerKeyVaultKey" : {
-              "keyUrl" : "https://somekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
-              "sourceVault" : "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/somekv"
-            },
             "importPrefix" : "aml",
             "exportPrefix" : "aml"
           },
@@ -84,6 +83,8 @@
             "progress": {
               "blobCount": 1,
               "blobName": "fsblob",
+              "size": 4.4,
+              "rate": 44.4,
               "errorCount": 0
             }
           },
@@ -121,15 +122,8 @@
           "provisioningState": "Succeeded",
           "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/amlvnet/subnets/sub1",
           "maintenanceWindow" : "2020-09-13T13:15Z",
-          "maintenanceStatus": {
-            "currentSoftwareVersion": "5.3.23"
-          },
           "hsmSettings": {
             "container": "https://somecontainer.blob.core.windows.net/containername",
-            "containerKeyVaultKey": {
-              "keyUrl": "https://somekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
-              "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/somekv"
-            },
             "importPrefix": "aml",
             "exportPrefix": "aml"
           },
@@ -138,6 +132,8 @@
             "progress": {
               "blobCount": 1,
               "blobName": "fsblob",
+              "size": 4.4,
+              "rate": 44.4,
               "errorCount": 0
             }
           },
