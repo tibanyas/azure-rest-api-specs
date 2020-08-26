@@ -2276,7 +2276,8 @@
             "storageCapacityTiB": {
               "description": "The size of this filesystem, in TiB.  This may be rounded up.",
               "type": "number",
-              "format": "float"
+              "format": "float",
+              "readOnly": true
             },
             "health": {
               "description": "Health of the amlFilesystem.",
@@ -2288,7 +2289,8 @@
               "items": {
                 "type": "string"
               },
-              "description": "Availability zones for nodes."
+              "description": "Availability zones for nodes.",
+              "readOnly": true
             },
             "provisioningState": {
               "description": "ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property",
@@ -2326,8 +2328,8 @@
               "readOnly": true
             },
             "throughputCapacity" : {
-              "type" : "string",
-              "description": "Throughput capacity in MB per sec, caculated as storageCapacityTiB * per-unit storage throughput",
+              "type" : "integer",
+              "description": "Throughput capacity in MB per sec, calculated as storageCapacityTiB * per-unit storage throughput",
               "readOnly": true
             },
             "encryptionSettings": {
@@ -2519,9 +2521,9 @@
       "type":"object",
       "description": "Information required to execute the archive operation",
       "properties": {
-        "filesystemPath" : {
+        "lustrePath" : {
           "type" : "string",
-          "description" : "The path to the filesystem to archive."
+          "description" : "Path of the data to archive relative to the root of the Lustre file system.  Specify '/' to archive all modified data."
         }
       }
     },

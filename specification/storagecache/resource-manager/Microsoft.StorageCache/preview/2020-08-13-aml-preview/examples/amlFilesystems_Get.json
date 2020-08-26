@@ -17,6 +17,7 @@
         "type": "Microsoft.StorageCache/amlFilesystem",
         "properties": {
           "storageCapacityTiB": 3072,
+          "throughputCapacity" : 500,
           "zones": ["1", "2"],
           "health": {
             "state": "Healthy",
@@ -53,7 +54,7 @@
             }
           },
           "archiveSettings" : {
-            "filesystemPath" : "/mnt/lfs1",
+            "lustrePath" : "/",
             "status" : {
               "state" : "InProgress",
               "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
