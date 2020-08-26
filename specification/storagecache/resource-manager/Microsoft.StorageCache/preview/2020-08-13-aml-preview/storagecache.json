@@ -2310,22 +2310,24 @@
               "description": "Subnet used exclusively for the amlFilesystem.",
               "$ref": "#/definitions/URLString"
             },
-            "MSGAddress" : {
+            "MGSAddress" : {
               "description": "IPv4 Address",
+              "readOnly" : true,
               "type" : "string"
             },
             "mountCommand" : {
-              "description" : "The command to use to mount the lustre FS",
+              "description" : "Recommended command to mount the Lustre filesystem",
+              "readOnly" : true,
               "type" : "string"
             },
             "lustreVersion" : {
               "type" : "string",
-              "description" : "The version of lustre running in the amlFilesystem",
+              "description" : "The version of Lustre running in the amlFilesystem",
               "readOnly": true
             },
             "throughputCapacity" : {
               "type" : "string",
-              "description": "Storage capacity in MB per sec, caculated as storageCapacityTiB * per-unit storage throughput",
+              "description": "Throughput capacity in MB per sec, caculated as storageCapacityTiB * per-unit storage throughput",
               "readOnly": true
             },
             "encryptionSettings": {
@@ -2376,10 +2378,10 @@
           "type": "object"
         },
         "sku": {
-          "description": "SKU for the Cache.",
+          "description": "SKU for the amlFilesystem",
           "properties": {
             "name": {
-              "description": "SKU name for this Cache.",
+              "description": "SKU name for this amlFilesystem",
               "type": "string"
             }
           },
@@ -2475,6 +2477,7 @@
           "type" : "string",
           "enum" : [
             "NotStarted",
+            "NotConfigured",
             "InProgress",
             "Failed",
             "Complete"
@@ -2502,7 +2505,7 @@
             },
             "blobName" : {
               "type" : "string",
-              "description" : "Name of the current blob"
+              "description" : "Name of a recent blob"
             },
             "errorCount" : {
               "type" : "integer",
@@ -2542,6 +2545,7 @@
               "description" : "The state of the archive operation",
               "type" : "string",
               "enum" : [
+                "NotConfigured",
                 "Idle",
                 "InProgress"
               ],
@@ -2596,17 +2600,6 @@
       "required": true,
       "type": "string",
       "description": "Client API version."
-    },
-    "amlFileySystemArchiveParameter": {
-      "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
-      "in": "path",
-      "name": "amlFilesystemName",
-      "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
-      "required": true,
-      "type": "string",
-      "minLength": 2,
-      "maxLength": 80,
-      "x-ms-parameter-location":"method"
     },
     "amlFilesystemNameParameter" : {
       "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",

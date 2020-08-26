@@ -24,8 +24,8 @@
               },
               "provisioningState": "Succeeded",
               "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/amlvnet/subnets/sub1",
-              "MSGAddress" : "10.0.0.4",
-              "mountCommand" : "mount -t lustre 10.1.0.13@tcp:/lustrefs /lustre/lustrefs",
+              "MGSAddress" : "10.0.0.4",
+              "mountCommand" : "mount -t lustre 10.0.0.43@tcp:/lustrefs /lustre/lustrefs",
               "lustreVersion" : "2.12.5",
               "encryptionSettings": {
                 "keyEncryptionKey": {
@@ -39,8 +39,8 @@
               },
               "hsmSettings": {
                 "container": "https://somecontainer.blob.core.windows.net/containername",
-                "importPrefix": "aml",
-                "exportPrefix": "aml"
+                "importPrefix": "fs1",
+                "exportPrefix": "fs1"
               },
               "namespaceHydrationStatus": {
                 "state": "NotStarted",
@@ -83,8 +83,8 @@
               },
               "provisioningState": "Succeeded",
               "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/amlvnet/subnets/sub2",
-              "MSGAddress" : "10.0.0.4",
-              "mountCommand" : "mount -t lustre 10.1.0.13@tcp:/lustrefs /lustre/lustrefs",
+              "MGSAddress" : "10.0.0.4",
+              "mountCommand" : "mount -t lustre 10.0.0.4@tcp:/lustrefs /lustre/lustrefs",
               "lustreVersion" : "2.12.5",
               "encryptionSettings": {
                 "keyEncryptionKey": {
@@ -98,8 +98,8 @@
               },
               "hsmSettings": {
                 "container": "https://somecontainer.blob.core.windows.net/containername",
-                "importPrefix": "aml",
-                "exportPrefix": "aml"
+                "importPrefix": "fs1",
+                "exportPrefix": "fs1"
               },
               "namespaceHydrationStatus": {
                 "state": "NotStarted",

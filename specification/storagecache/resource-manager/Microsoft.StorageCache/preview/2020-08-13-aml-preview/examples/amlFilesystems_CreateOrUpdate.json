@@ -13,9 +13,6 @@
         "storageCapacityTiB": 3072,
         "zones" : ["1", "2"],
         "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1",
-        "MSGAddress" : "10.0.0.4",
-        "mountCommand" : "mount -t lustre 10.1.0.13@tcp:/lustrefs /lustre/lustrefs",
-        "lustreVersion" : "2.12.5",
         "encryptionSettings": {
           "keyEncryptionKey": {
             "keyUrl": "https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
@@ -60,8 +57,8 @@
           },
           "provisioningState": "Succeeded",
           "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/scvnet/subnets/sub1",
-          "MSGAddress" : "10.0.0.4",
-          "mountCommand" : "mount -t lustre 10.1.0.13@tcp:/lustrefs /lustre/lustrefs",
+          "MGSAddress" : "10.0.0.4",
+          "mountCommand" : "mount -t lustre 10.0.0.4@tcp:/lustrefs /lustre/lustrefs",
           "lustreVersion" : "2.12.5",
           "encryptionSettings": {
             "keyEncryptionKey": {
@@ -75,8 +72,8 @@
           },
           "hsmSettings" : {
             "container" : "https://somecontainer.blob.core.windows.net/containername",
-            "importPrefix" : "aml",
-            "exportPrefix" : "aml"
+            "importPrefix" : "fs1",
+            "exportPrefix" : "fs1"
           },
           "namespaceHydrationStatus": {
             "state": "NotStarted",
@@ -121,11 +118,14 @@
           },
           "provisioningState": "Succeeded",
           "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/amlvnet/subnets/sub1",
+          "MGSAddress" : "10.0.0.4",
+          "mountCommand" : "mount -t lustre 10.0.0.4@tcp:/lustrefs /lustre/lustrefs",
+          "lustreVersion" : "2.12.5",
           "maintenanceWindow" : "2020-09-13T13:15Z",
           "hsmSettings": {
             "container": "https://somecontainer.blob.core.windows.net/containername",
-            "importPrefix": "aml",
-            "exportPrefix": "aml"
+            "importPrefix": "fs1",
+            "exportPrefix": "fs1"
           },
           "namespaceHydrationStatus": {
             "state": "NotStarted",
