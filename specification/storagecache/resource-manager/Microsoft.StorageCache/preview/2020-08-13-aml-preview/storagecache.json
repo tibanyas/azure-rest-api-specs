@@ -2394,6 +2394,7 @@
       "type": "object"
     },
     "amlFilesystemName" : {
+      "readOnly": true,
       "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
       "type" : "string",
       "pattern": "^[0-9a-zA-Z][-0-9a-zA-Z_]{0,78}[0-9a-zA-Z]$",
@@ -2419,6 +2420,7 @@
     },
     "amlFilesystemHealth": {
       "description": "An indication of amlFilesystem health. Gives more information about health than just that related to provisioning.",
+      "readOnly": true,
       "properties": {
         "state": {
           "description": "List of amlFilesystem health states.",
@@ -2428,6 +2430,7 @@
             "Available",
             "Degraded",
             "Transitioning",
+            "HydratingNamespace",
             "Maintenance"
           ],
           "x-ms-enum": {
@@ -2461,6 +2464,7 @@
         },
         "importPrefix" : {
           "description": "Path/Prefix for blobs in above container.  Only blobs containing this prefix get pre-hydrated into the cluster namespace",
+          "readOnly": true,
           "type" : "string"
         },
         "exportPrefix" : {
@@ -2497,11 +2501,12 @@
               "description" : "The number of Blobs processed.",
               "type": "integer"
             },
-            "size" : {
-              "type" : "integer",
-              "description" : "Aggregate size of blobs ingested so far"
+            "totalFileSizeTiB" : {
+              "description" : "Aggregate size of blobs ingested so far in TiB",
+              "type": "number",
+              "format": "float"
             },
-            "rate" : {
+            "namesPerSec" : {
               "type" : "integer",
               "description": "Rate of ingest accounting for the last 30 seconds"
             },
@@ -2521,7 +2526,7 @@
       "type":"object",
       "description": "Information required to execute the archive operation",
       "properties": {
-        "lustrePath" : {
+        "filesystemPath" : {
           "type" : "string",
           "description" : "Path of the data to archive relative to the root of the Lustre file system.  Specify '/' to archive all modified data."
         }
@@ -2575,12 +2580,12 @@
             },
             "errorCode" : {
               "readOnly" : true,
-              "description" : "The error code of the archive operation",
-              "type" : "integer"
+              "description" : "Server-defined error code for the archive operation",
+              "type" : "string"
             },
             "errorMessage" : {
               "readOnly" : true,
-              "description" : "The error message of the archive operation",
+              "description" : "Server-defined error message of the archive operation",
               "type" : "string"
             }
           }

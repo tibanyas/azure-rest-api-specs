@@ -27,7 +27,6 @@
             "keyUrl" : "https://somekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
             "sourceVault" : "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/somekv"
           },
-          "importPrefix" : "asc",
           "exportPrefix" : "asc"
         }
       },
@@ -79,13 +78,13 @@
             "progress": {
               "blobCount": 1,
               "blobName": "fsblob",
-              "size": 4.4,
-              "rate": 44.4,
+              "totalFileSizeTiB": 4.4,
+              "namesPerSec": 44,
               "errorCount": 0
             }
           },
           "archiveSettings" : {
-            "lustrePath" : "/",
+            "filesystemPath" : "/",
             "status" : {
               "state" : "InProgress",
               "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
@@ -132,13 +131,13 @@
             "progress": {
               "blobCount": 1,
               "blobName": "fsblob",
-              "size": 4.4,
-              "rate": 44.4,
+              "totalFileSizeTiB": 4.4,
+              "namesPerSec": 44,
               "errorCount": 0
             }
           },
           "archiveSettings" : {
-            "lustrePath" : "/",
+            "filesystemPath" : "/",
             "status" : {
               "state" : "InProgress",
               "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
