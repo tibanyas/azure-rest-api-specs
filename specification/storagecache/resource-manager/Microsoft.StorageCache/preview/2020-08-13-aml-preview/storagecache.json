@@ -2402,14 +2402,14 @@
       "maxLength": 80
     },
     "amlFilesystemsListResult": {
-      "description": "Result of the request to list Caches. It contains a list of Caches and a URL link to get the next set of results.",
+      "description": "Result of the request to list amlFilesystems. It contains a list of amlFilesystems and a URL link to get the next set of results.",
       "properties": {
         "nextLink": {
-          "description": "URL to get the next set of Cache list results, if there are any.",
+          "description": "URL to get the next set of amlFilesystem list results, if there are any.",
           "type": "string"
         },
         "value": {
-          "description": "List of Caches.",
+          "description": "List of amlFilesystems.",
           "items": {
             "$ref": "#/definitions/amlFilesystem"
           },
@@ -2464,7 +2464,6 @@
         },
         "importPrefix" : {
           "description": "Path/Prefix for blobs in above container.  Only blobs containing this prefix get pre-hydrated into the cluster namespace",
-          "readOnly": true,
           "type" : "string"
         },
         "exportPrefix" : {
@@ -2508,7 +2507,7 @@
             },
             "namesPerSec" : {
               "type" : "integer",
-              "description": "Rate of ingest accounting for the last 30 seconds"
+              "description": "Rate of ingest over the last 30 seconds"
             },
             "blobName" : {
               "type" : "string",
@@ -2540,7 +2539,7 @@
         "filesystemPath" : {
           "readOnly": true,
           "type" : "string",
-          "description" : "The path to the filesystem to archive."
+          "description" : "Path of the data to archive relative to the root of the Lustre file system.  Specify '/' to archive all modified data."
         },
         "status" : {
           "description" : "The status of the archive",
