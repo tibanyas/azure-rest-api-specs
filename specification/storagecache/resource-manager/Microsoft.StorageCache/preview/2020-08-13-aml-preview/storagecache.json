@@ -1451,6 +1451,65 @@
         "description": "Archive data from the amlFilesystem.",
         "operationId": "amlFilesystems_Archive"
       }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{amlFilesystemName}/cancelArchive": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "description": "Target resource group.",
+            "in": "path",
+            "name": "resourceGroupName",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref":"#/parameters/amlFilesystemNameParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "amlFilesystem archived has been cancelled",
+            "schema": {}
+          },
+          "202": {
+            "description": "amlFilesystem has started the cancellation of the archive",
+            "schema": {}
+          },
+          "204": {
+            "description": "amlFilesystem archive has been cancelled",
+            "schema": {}
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "amlFilesystems_cancelArchive": {
+            "$ref": "./examples/amlFilesystems_cancelArchive.json"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-long-running-operation-options": {
+          "final-state-via": "azure-async-operation"
+        },
+        "tags": [
+          "amlFilesystems"
+        ],
+        "description": "Cancel the Archive of data from the amlFilesystem.",
+        "operationId": "amlFilesystems_CancelArchive"
+      }
     }
   },
   "definitions": {
@@ -2552,8 +2611,10 @@
               "type" : "string",
               "enum" : [
                 "NotConfigured",
-                "Idle",
-                "InProgress"
+                "InProgress",
+                "Cancelled",
+                "Completed",
+                "Failed"
               ],
               "x-ms-enum": {
                 "name": "ArchiveStatusType",
