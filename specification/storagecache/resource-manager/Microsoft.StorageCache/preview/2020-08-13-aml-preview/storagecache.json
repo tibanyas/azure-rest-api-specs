@@ -2518,7 +2518,11 @@
       "description": "amlFilesystem HSM settings.",
       "properties": {
         "container": {
-          "description": "Container used for the amlFilesystem.",
+          "description": "Container used for the hydrating the namespace and archiving from the namespace.",
+          "$ref": "#/definitions/URLString"
+        },
+        "loggingContainer": {
+          "description": "A container in the same storage account as the container for hydrating and archiving used for the logging events and errors.",
           "$ref": "#/definitions/URLString"
         },
         "importPrefix" : {

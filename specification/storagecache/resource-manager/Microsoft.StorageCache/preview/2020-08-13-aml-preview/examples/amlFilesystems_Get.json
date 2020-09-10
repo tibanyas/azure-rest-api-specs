@@ -40,6 +40,7 @@
           },
           "hsmSettings": {
             "container": "https://somecontainer.blob.core.windows.net/containername",
+            "loggingContainer" : "https://somecontainer.blob.core.windows.net/loggingcontainername",
             "importPrefix": "fs1",
             "exportPrefix": "fs1"
           },
