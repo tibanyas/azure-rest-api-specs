@@ -47,7 +47,7 @@
         "type": "Microsoft.StorageCache/amlFilesystem",
         "properties": {
           "storageCapacityTiB": 3072,
-          "throughputCapacity" : 500,
+          "throughputProvisioned" : 500,
           "zones" : ["1", "2"],
           "health": {
             "state": "Healthy",
@@ -109,7 +109,7 @@
         "type": "Microsoft.StorageCache/amlFilesystem",
         "properties": {
           "storageCapacityTiB": 3072,
-          "throughputCapacity" : 500,
+          "throughputProvisioned" : 500,
           "zones": ["1", "2"],
           "health": {
             "state": "Healthy",
@@ -120,7 +120,10 @@
           "MGSAddress" : "10.0.0.4",
           "mountCommand" : "mount -t lustre 10.0.0.4@tcp:/lustrefs /lustre/lustrefs",
           "lustreVersion" : "2.12.5",
-          "maintenanceWindow" : "2020-09-13T13:15Z",
+          "maintenanceWindow" : {
+            "dayOfWeek": "Friday",
+            "timeOfDay" : "22:00"
+          },
           "hsmSettings": {
             "container": "https://somecontainer.blob.core.windows.net/containername",
             "importPrefix": "fs1",

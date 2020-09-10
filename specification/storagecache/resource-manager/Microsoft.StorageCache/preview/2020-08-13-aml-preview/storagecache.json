@@ -1211,7 +1211,7 @@
         "tags": [
           "amlFilesystems"
         ],
-        "description": "Schedules a amlFilesystem for deletion.",
+        "description": "Schedules an amlFilesystem for deletion.",
         "operationId": "amlFilesystems_Delete"
       },
       "get": {
@@ -1302,7 +1302,7 @@
             }
           },
           "201": {
-            "description": "amlFilesystem creation or update has been initiated. Poll the new amlFilesystem's provisioningState property to monitor creation progress.",
+            "description": "amlFilesystem creation or update has been initiated. Poll the new amlFilesystem's provisioningState and health to monitor creation progress.",
             "schema": {
               "$ref": "#/definitions/amlFilesystem"
             }
@@ -1323,7 +1323,7 @@
         "tags": [
           "amlFilesystems"
         ],
-        "description": "Create or update a amlFilesystem.",
+        "description": "Create or update an amlFilesystem.",
         "operationId": "amlFilesystems_CreateOrUpdate"
       },
       "patch": {
@@ -1381,7 +1381,7 @@
         "tags": [
           "amlFilesystems"
         ],
-        "description": "Update a amlFilesystem instance.",
+        "description": "Update an amlFilesystem instance.",
         "operationId": "amlFilesystems_Update"
       }
     },
@@ -2386,9 +2386,9 @@
               "description" : "The version of Lustre running in the amlFilesystem",
               "readOnly": true
             },
-            "throughputCapacity" : {
+            "throughputProvisioned" : {
               "type" : "integer",
-              "description": "Throughput capacity in MB per sec, calculated as storageCapacityTiB * per-unit storage throughput",
+              "description": "Throughput provisioned in MB per sec, calculated as storageCapacityTiB * per-unit storage throughput",
               "readOnly": true
             },
             "encryptionSettings": {

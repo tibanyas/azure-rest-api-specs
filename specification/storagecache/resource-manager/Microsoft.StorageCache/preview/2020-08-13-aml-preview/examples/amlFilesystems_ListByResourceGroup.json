@@ -18,7 +18,7 @@
             "type": "Microsoft.StorageCache/amlFilesystem",
             "properties": {
               "storageCapacityTiB": 3072,
-              "throughputCapacity" : 500,
+              "throughputProvisioned" : 500,
               "zones": ["1", "2"],
               "health": {
                 "state": "Healthy",
@@ -77,7 +77,7 @@
             "type": "Microsoft.StorageCache/amlFilesystem",
             "properties": {
               "storageCapacityTiB": 3072,
-              "throughputCapacity" : 500,
+              "throughputProvisioned" : 500,
               "zones": ["1", "2"],
               "health": {
                 "state": "Healthy",

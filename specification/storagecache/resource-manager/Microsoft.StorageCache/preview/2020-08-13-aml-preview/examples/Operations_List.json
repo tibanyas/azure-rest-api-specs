@@ -27,6 +27,14 @@
               "provider": "Azure Storage Cache",
               "resource": "Caches"
             }
+          },
+          {
+            "name": "Microsoft.StorageCache/amlFilesystems/write",
+            "display": {
+              "operation": "Create or Update an amlFilesystem",
+              "provider": "Azure Storage Cache",
+              "resource": "amlFilesystems"
+            }
           }
         ]
       }
