@@ -3,7 +3,7 @@
   "info": {
     "description": "A Storage Cache provides scalable caching service for NAS clients, serving data from either NFSv3 or Blob at-rest storage (referred to as \"Storage Targets\"). These operations allow you to manage Caches.",
     "title": "Storage Cache Mgmt Client",
-    "version": "2020-03-01"
+    "version": "2020-10-01-preview"
   },
   "host": "management.azure.com",
   "basePath": "/",
@@ -270,7 +270,7 @@
           "200": {
             "description": "A list of amlFilesystem objects. Note that entity references might replace complete Cache objects, as described in http://docs.oasis-open.org/odata/odata-json-format/v4.01/cs01/odata-json-format-v4.01-cs01.html#sec_EntityReference",
             "schema": {
-              "$ref": "#/definitions/amlFilesystemsListResult"
+              "$ref": "#/definitions/AmlFilesystemsListResult"
             }
           },
           "default": {
@@ -1134,7 +1134,7 @@
           "200": {
             "description": "A list of amlFilesystem objects. Note that entity references might replace complete amlFilesystem objects, as described in http://docs.oasis-open.org/odata/odata-json-format/v4.01/cs01/odata-json-format-v4.01-cs01.html#sec_EntityReference",
             "schema": {
-              "$ref": "#/definitions/amlFilesystemsListResult"
+              "$ref": "#/definitions/AmlFilesystemsListResult"
             }
           },
           "default": {
@@ -1173,7 +1173,7 @@
             "type": "string"
           },
           {
-            "$ref":"#/parameters/amlFilesystemNameParameter"
+            "$ref":"#/parameters/AmlFilesystemNameParameter"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -1227,7 +1227,7 @@
             "type": "string"
           },
           {
-            "$ref":"#/parameters/amlFilesystemNameParameter"
+            "$ref":"#/parameters/AmlFilesystemNameParameter"
           },
           {
             "$ref": "#/parameters/ApiVersionParameter"
@@ -1240,7 +1240,7 @@
           "200": {
             "description": "Returns the amlFilesystem object corresponding to amlFilesystemName.",
             "schema": {
-              "$ref": "#/definitions/amlFilesystem"
+              "$ref": "#/definitions/AmlFilesystem"
             }
           },
           "default": {
@@ -1283,14 +1283,14 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref":"#/parameters/amlFilesystemNameParameter"
+            "$ref":"#/parameters/AmlFilesystemNameParameter"
           },
           {
             "description": "Object containing the user-selectable properties of the new amlFilesystem. If read-only properties are included, they must match the existing values of those properties.",
             "in": "body",
             "name": "amlFilesystem",
             "schema": {
-              "$ref": "#/definitions/amlFilesystem"
+              "$ref": "#/definitions/AmlFilesystem"
             }
           }
         ],
@@ -1298,13 +1298,13 @@
           "200": {
             "description": "amlFilesystem created or updated.",
             "schema": {
-              "$ref": "#/definitions/amlFilesystem"
+              "$ref": "#/definitions/AmlFilesystem"
             }
           },
           "201": {
             "description": "amlFilesystem creation or update has been initiated. Poll the new amlFilesystem's provisioningState and health to monitor creation progress.",
             "schema": {
-              "$ref": "#/definitions/amlFilesystem"
+              "$ref": "#/definitions/AmlFilesystem"
             }
           },
           "default": {
@@ -1348,14 +1348,14 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref":"#/parameters/amlFilesystemNameParameter"
+            "$ref":"#/parameters/AmlFilesystemNameParameter"
           },
           {
             "description": "Object containing the user-selectable properties of the amlFilesystem. If read-only properties are included, they must match the existing values of those properties.",
             "in": "body",
             "name": "amlFilesystem",
             "schema": {
-              "$ref": "#/definitions/amlFilesystem"
+              "$ref": "#/definitions/AmlFilesystem"
             }
           }
         ],
@@ -1363,7 +1363,7 @@
           "200": {
             "description": "Updated the amlFilesystem.",
             "schema": {
-              "$ref": "#/definitions/amlFilesystem"
+              "$ref": "#/definitions/AmlFilesystem"
             }
           },
           "default": {
@@ -1405,14 +1405,14 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref":"#/parameters/amlFilesystemNameParameter"
+            "$ref":"#/parameters/AmlFilesystemNameParameter"
           },
           {
             "name": "archiveInfo",
             "in": "body",
             "description" : "Information about the archive operation",
             "schema": {
-              "$ref": "#/definitions/amlFilesystemArchiveInfo"
+              "$ref": "#/definitions/AmlFilesystemArchiveInfo"
             }
           }
         ],
@@ -1472,7 +1472,7 @@
             "$ref": "#/parameters/SubscriptionIdParameter"
           },
           {
-            "$ref":"#/parameters/amlFilesystemNameParameter"
+            "$ref":"#/parameters/AmlFilesystemNameParameter"
           }
         ],
         "responses": {
@@ -2298,7 +2298,7 @@
       },
       "type": "object"
     },
-    "amlFilesystem": {
+    "AmlFilesystem": {
       "description": "An amlFilesystem instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md",
       "properties": {
         "tags": {
@@ -2317,7 +2317,7 @@
         "name": {
           "description": "Name of amlFilesystem.",
           "readOnly": true,
-          "$ref": "#/definitions/amlFilesystemName"
+          "$ref": "#/definitions/AmlFilesystemName"
         },
         "type": {
           "description": "Type of the filesystem; Microsoft.StorageCache/amlFilesystem",
@@ -2333,23 +2333,21 @@
           "description": "Properties of the amlFilesystem.",
           "properties": {
             "storageCapacityTiB": {
-              "description": "The size of this filesystem, in TiB.  This may be rounded up.",
+              "description": "The size of this filesystem, in TiB.  This may be rounded up. This field can't be supplied in modify operations.",
               "type": "number",
-              "format": "float",
-              "readOnly": true
+              "format": "float"
             },
             "health": {
               "description": "Health of the amlFilesystem.",
               "readOnly": true,
-              "$ref": "#/definitions/amlFilesystemHealth"
+              "$ref": "#/definitions/AmlFilesystemHealth"
             },
             "zones": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "description": "Availability zones for nodes.",
-              "readOnly": true
+              "description": "Availability zones for nodes. This field can't be supplied in modify operations."
             },
             "provisioningState": {
               "description": "ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property",
@@ -2368,7 +2366,7 @@
               "type": "string"
             },
             "subnet": {
-              "description": "Subnet used exclusively for the amlFilesystem.",
+              "description": "Subnet used exclusively for the amlFilesystem. This field can't be supplied in modify operations.",
               "$ref": "#/definitions/URLString"
             },
             "MGSAddress" : {
@@ -2392,11 +2390,11 @@
               "readOnly": true
             },
             "encryptionSettings": {
-              "$ref": "#/definitions/amlFilesystemEncryptionSettings",
-              "description": "Specifies encryption settings of the amlFilesystem"
+              "$ref": "#/definitions/AmlFilesystemEncryptionSettings",
+              "description": "Specifies encryption settings of the amlFilesystem."
             },
             "maintenanceWindow": {
-              "description": "Start time of a 30 minute weekly maintenance window",
+              "description": "Start time of a 30 minute weekly maintenance window.",
               "type" : "object",
               "properties": {
                 "dayOfWeek" : {
@@ -2424,16 +2422,16 @@
               }
             },
             "hsmSettings": {
-              "$ref": "#/definitions/amlFilesystemHSMSettings",
+              "$ref": "#/definitions/AmlFilesystemHSMSettings",
               "description": "Specifies HSM settings of the amlFilesystem."
             },
             "namespaceHydrationStatus": {
               "description" : "Namespace Hydration Status during creation",
-              "$ref": "#/definitions/amlFilesystemNamespaceHydrationStatus"
+              "$ref": "#/definitions/AmlFilesystemNamespaceHydrationStatus"
             },
             "archiveSettings" : {
               "description": "Archive settings and status",
-              "$ref" :  "#/definitions/amlFilesystemArchive"
+              "$ref" :  "#/definitions/AmlFilesystemArchive"
             }
           },
           "type": "object"
@@ -2452,7 +2450,7 @@
       "x-ms-azure-resource": true,
       "type": "object"
     },
-    "amlFilesystemName" : {
+    "AmlFilesystemName" : {
       "readOnly": true,
       "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
       "type" : "string",
@@ -2460,7 +2458,7 @@
       "minLength": 2,
       "maxLength": 80
     },
-    "amlFilesystemsListResult": {
+    "AmlFilesystemsListResult": {
       "description": "Result of the request to list amlFilesystems. It contains a list of amlFilesystems and a URL link to get the next set of results.",
       "properties": {
         "nextLink": {
@@ -2470,14 +2468,14 @@
         "value": {
           "description": "List of amlFilesystems.",
           "items": {
-            "$ref": "#/definitions/amlFilesystem"
+            "$ref": "#/definitions/AmlFilesystem"
           },
           "type": "array"
         }
       },
       "type": "object"
     },
-    "amlFilesystemHealth": {
+    "AmlFilesystemHealth": {
       "description": "An indication of amlFilesystem health. Gives more information about health than just that related to provisioning.",
       "readOnly": true,
       "properties": {
@@ -2493,7 +2491,7 @@
             "Maintenance"
           ],
           "x-ms-enum": {
-            "name": "amlFilesystemHealthStateType",
+            "name": "AmlFilesystemHealthStateType",
             "modelAsString": true
           },
           "type": "string"
@@ -2504,7 +2502,7 @@
         }
       }
     },
-    "amlFilesystemEncryptionSettings": {
+    "AmlFilesystemEncryptionSettings": {
       "description": "amlFilesystem encryption settings.",
       "properties": {
         "keyEncryptionKey": {
@@ -2514,8 +2512,8 @@
         }
       }
     },
-    "amlFilesystemHSMSettings": {
-      "description": "amlFilesystem HSM settings.",
+    "AmlFilesystemHSMSettings": {
+      "description": "amlFilesystem HSM settings. This field can't be supplied in modify operations.",
       "properties": {
         "container": {
           "description": "Container used for the hydrating the namespace and archiving from the namespace.",
@@ -2535,7 +2533,7 @@
         }
       }
     },
-    "amlFilesystemNamespaceHydrationStatus" : {
+    "AmlFilesystemNamespaceHydrationStatus" : {
       "description" : "Information about the amlFilesystem namespace hydration status",
       "type" : "object",
       "readOnly" : true,
@@ -2544,9 +2542,8 @@
           "description" : "The state of the namespace hydration",
           "type" : "string",
           "enum" : [
-            "NotStarted",
             "NotConfigured",
-            "InProgress",
+            "Pending",
             "Failed",
             "Complete"
           ],
@@ -2584,17 +2581,17 @@
         }
       }
     },
-    "amlFilesystemArchiveInfo": {
+    "AmlFilesystemArchiveInfo": {
       "type":"object",
       "description": "Information required to execute the archive operation",
       "properties": {
         "filesystemPath" : {
           "type" : "string",
-          "description" : "Path of the data to archive relative to the root of the Lustre file system.  Specify '/' to archive all modified data."
+          "description" : "Lustre file system path to archive relative to the lustre filesystem root.  Specify '/' to archive all modified data."
         }
       }
     },
-    "amlFilesystemArchive" : {
+    "AmlFilesystemArchive" : {
       "description" : "Information about the amlFilesystem archive",
       "type" : "object",
       "readOnly": true,
@@ -2602,7 +2599,7 @@
         "filesystemPath" : {
           "readOnly": true,
           "type" : "string",
-          "description" : "Path of the data to archive relative to the root of the Lustre file system.  Specify '/' to archive all modified data."
+          "description" : "Lustre file system path to archive relative to the lustre filesystem root.  Specify '/' to archive all modified data."
         },
         "status" : {
           "description" : "The status of the archive",
@@ -2615,7 +2612,7 @@
               "type" : "string",
               "enum" : [
                 "NotConfigured",
-                "InProgress",
+                "Pending",
                 "Cancelled",
                 "Completed",
                 "Failed"
@@ -2672,7 +2669,7 @@
       "type": "string",
       "description": "Client API version."
     },
-    "amlFilesystemNameParameter" : {
+    "AmlFilesystemNameParameter" : {
       "description": "Name for the amlFilesystem.  Alphanumerics, underscores, and hyphens. Start and end with alphanumeric.",
       "in": "path",
       "name": "amlFilesystemName",

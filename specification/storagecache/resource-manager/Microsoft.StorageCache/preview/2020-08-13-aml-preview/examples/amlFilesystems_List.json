@@ -1,7 +1,7 @@
 {
   "parameters": {
     "subscriptionId": "00000000-0000-0000-0000-000000000000",
-    "api-version": "2020-07-23-preview"
+    "api-version": "2020-10-01-preview"
   },
   "responses": {
     "200": {
@@ -45,7 +45,7 @@
                 "exportPrefix": "fs1"
               },
               "namespaceHydrationStatus": {
-                "state": "NotStarted",
+                "state": "NotConfigured",
                 "progress": {
                   "blobCount": 1,
                   "blobName": "fsblob",
@@ -57,10 +57,9 @@
               "archiveSettings" : {
                 "filesystemPath" : "/",
                 "status" : {
-                  "state" : "InProgress",
+                  "state" : "Completed",
                   "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
-                  "lastStartedTime" : "2019-04-21T17:25:43.511Z",
-                  "percentComplete" : 50
+                  "lastStartedTime" : "2019-04-21T17:25:43.511Z"
                 }
               }
             },
@@ -106,7 +105,7 @@
                 "exportPrefix": "fs1"
               },
               "namespaceHydrationStatus": {
-                "state": "NotStarted",
+                "state": "NotConfigured",
                 "progress": {
                   "blobCount": 1,
                   "blobName": "fsblob",
@@ -118,10 +117,9 @@
               "archiveSettings" : {
                 "filesystemPath" : "/",
                 "status" : {
-                  "state" : "InProgress",
+                  "state" : "Completed",
                   "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
-                  "lastStartedTime" : "2019-04-21T17:25:43.511Z",
-                  "percentComplete" : 50
+                  "lastStartedTime" : "2019-04-21T17:25:43.511Z"
                 }
               }
             },
