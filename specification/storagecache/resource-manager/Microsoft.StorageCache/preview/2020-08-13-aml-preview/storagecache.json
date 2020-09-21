@@ -2333,7 +2333,7 @@
           "description": "Properties of the amlFilesystem.",
           "properties": {
             "storageCapacityTiB": {
-              "description": "The size of this filesystem, in TiB.  This may be rounded up. This field can't be supplied in modify operations.",
+              "description": "The size of this filesystem, in TiB.  This may be rounded up. This field may be provided in modify operations but attempting to change its vlaue will generate an error.",
               "type": "number",
               "format": "float"
             },
@@ -2347,7 +2347,7 @@
               "items": {
                 "type": "string"
               },
-              "description": "Availability zones for nodes. This field can't be supplied in modify operations."
+              "description": "Availability zones for resources. This field may be provided in modify operations but attempting to change its vlaue will generate an error."
             },
             "provisioningState": {
               "description": "ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property",
@@ -2366,7 +2366,7 @@
               "type": "string"
             },
             "subnet": {
-              "description": "Subnet used exclusively for the amlFilesystem. This field can't be supplied in modify operations.",
+              "description": "Subnet used exclusively for the amlFilesystem. This field may be provided in modify operations but attempting to change its vlaue will generate an error.",
               "$ref": "#/definitions/URLString"
             },
             "MGSAddress" : {
@@ -2513,7 +2513,7 @@
       }
     },
     "AmlFilesystemHSMSettings": {
-      "description": "amlFilesystem HSM settings. This field can't be supplied in modify operations.",
+      "description": "amlFilesystem HSM settings. This field may be provided in modify operations but attempting to change its vlaue will generate an error.",
       "properties": {
         "container": {
           "description": "Container used for the hydrating the namespace and archiving from the namespace.",
