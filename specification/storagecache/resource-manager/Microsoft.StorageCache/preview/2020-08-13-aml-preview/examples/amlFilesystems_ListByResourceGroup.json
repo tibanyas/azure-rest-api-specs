@@ -1,0 +1,135 @@
+{
+  "parameters": {
+    "resourceGroupName": "scgroup",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "api-version": "2020-10-01-preview"
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "value": [
+          {
+            "tags": {
+              "Dept": "ContosoAds"
+            },
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.StorageCache/amlFilesystems/fs1",
+            "location": "westus",
+            "name": "fs1",
+            "type": "Microsoft.StorageCache/amlFilesystem",
+            "properties": {
+              "storageCapacityTiB": 3072,
+              "throughputProvisioned" : 500,
+              "zones": ["1", "2"],
+              "health": {
+                "state": "Healthy",
+                "statusDescription": "amlFilesystem is ok."
+              },
+              "provisioningState": "Succeeded",
+              "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/amlvnet/subnets/sub1",
+              "MGSAddress" : "10.0.0.4",
+              "mountCommand" : "mount -t lustre 10.0.0.4@tcp:/lustrefs /lustre/lustrefs",
+              "lustreVersion" : "2.12.5",
+              "encryptionSettings": {
+                "keyEncryptionKey": {
+                  "keyUrl": "https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
+                  "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/examplekv"
+                }
+              },
+              "maintenanceWindow" : {
+                "dayOfWeek": "Friday",
+                "timeOfDay" : "22:00"
+              },
+              "hsmSettings": {
+                "container": "https://storageaccountname.blob.core.windows.net/containername",
+                "loggingContainer" : "https://storageaccountname.blob.core.windows.net/loggingcontainername",
+                "importPrefix": "fs1",
+                "exportPrefix": "fs1"
+              },
+              "namespaceHydrationStatus": {
+                "state": "NotConfigured",
+                "progress": {
+                  "blobCount": 1,
+                  "blobName": "fsblob",
+                  "totalFileSizeTiB": 4.4,
+                  "namesPerSec": 44,
+                  "errorCount": 0
+                }
+              },
+              "archiveSettings" : {
+                "filesystemPath" : "/",
+                "status" : {
+                  "state" : "Completed",
+                  "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
+                  "lastStartedTime" : "2019-04-21T17:25:43.511Z"
+                }
+              }
+            },
+            "sku": {
+              "name": "Standard_2G"
+            }            
+          },
+          {
+            "tags": {
+              "Dept": "ContosoAds"
+            },
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.StorageCache/amlFilesystems/fs2",
+            "location": "westus",
+            "name": "fs2",
+            "type": "Microsoft.StorageCache/amlFilesystem",
+            "properties": {
+              "storageCapacityTiB": 3072,
+              "throughputProvisioned" : 500,
+              "zones": ["1", "2"],
+              "health": {
+                "state": "Healthy",
+                "statusDescription": "amlFilesystem is ok."
+              },
+              "provisioningState": "Succeeded",
+              "subnet": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/scgroup/providers/Microsoft.Network/virtualNetworks/amlvnet/subnets/sub2",
+              "MGSAddress" : "10.0.0.4",
+              "mountCommand" : "mount -t lustre 10.0.0.4@tcp:/lustrefs /lustre/lustrefs",
+              "lustreVersion" : "2.12.5",
+              "encryptionSettings": {
+                "keyEncryptionKey": {
+                  "keyUrl": "https://examplekv.vault.azure.net/keys/kvk/3540a47df75541378d3518c6a4bdf5af",
+                  "sourceVault": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/some-rg/providers/Microsoft.KeyVault/vaults/examplekv"
+                }
+              },
+              "maintenanceWindow" : {
+                "dayOfWeek": "Friday",
+                "timeOfDay" : "22:00"
+              },
+              "hsmSettings": {
+                "container": "https://storageaccountname.blob.core.windows.net/containername",
+                "loggingContainer" : "https://storageaccountname.blob.core.windows.net/loggingcontainername",
+                "importPrefix": "fs1",
+                "exportPrefix": "fs1"
+              },
+              "namespaceHydrationStatus": {
+                "state": "NotConfigured",
+                "progress": {
+                  "blobCount": 1,
+                  "blobName": "fsblob",
+                  "totalFileSizeTiB": 4.4,
+                  "namesPerSec": 44,
+                  "errorCount": 0
+                }
+              },
+              "archiveSettings" : {
+                "filesystemPath" : "/",
+                "status" : {
+                  "state" : "Completed",
+                  "lastCompletionTime" : "2019-04-21T18:25:43.511Z",
+                  "lastStartedTime" : "2019-04-21T17:25:43.511Z"
+                }
+              }
+            },
+            "sku": {
+              "name": "Standard_2G"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
